@@ -14,6 +14,7 @@ class ViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,U
      
     @IBOutlet weak var buildingTable: UITableView!
     
+    
     var buildingDetails = [BuildingDetails]()
     var currentBuildingDetails = [BuildingDetails]()
     
@@ -55,12 +56,12 @@ class ViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,U
                 buildingTable.reloadData()
                 return
             }
-            currentBuildingDetails = buildingDetails.filter({ buildingDetails -> Bool in
+            currentBuildingDetails = buildingDetails.filter({ buildingDetail -> Bool in
                 guard let text = searchBar.text else {
                     return false
                 }
-                return (buildingDetails.buildingName.lowercased().contains(text.lowercased()) ||
-                    buildingDetails.buildingAddress.lowercased().contains(text.lowercased()))
+                return (buildingDetail.buildingName.lowercased().contains(text.lowercased()) ||
+                    buildingDetail.buildingAddress.lowercased().contains(text.lowercased()))
             })
             self.buildingTable.reloadData()
         }
@@ -71,6 +72,25 @@ class ViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,U
             buildingDetails.append(BuildingDetails(buildingName: "GCR", buildingAddress: "2nd Floor, Above Sri Suman Electricals, YMCA Circle, Narayanaguda, Hyderabad"))
             buildingDetails.append(BuildingDetails(buildingName: "Orchid", buildingAddress: "First Floor, Opp. Ginger Court Restaurant, Madhapur, Hyderabad, Telangana"))
             currentBuildingDetails = buildingDetails
+            
+            let session = URLSession.shared
+            let url = URL(string: "http://cowork-0.coworkingfoodorderingbff.incubate.oyorooms.ms/api/wsfoodordering/catalog/building/all/lite")
+            
+            let task = session.dataTask(with: url!){ data, response, error in
+                if error != nil || data==nil{
+                    print("Error")
+                    return
+                }
+                do{
+                    let res = try JSONSerialization.jsonObject(with: data!, options: [])
+                    print(res)
+                }
+                catch{
+                    print("JSON Error")
+                }
+            }
+            task.resume()
+            
         }
 
     class BuildingDetails {
@@ -82,6 +102,12 @@ class ViewController: UIViewController,UISearchBarDelegate,UITableViewDelegate,U
             self.buildingAddress = buildingAddress
         }
     }
+    
+//
+//    class Data: Decodable{
+//        let buildingType : String
+//
+//    }
   
 
 }

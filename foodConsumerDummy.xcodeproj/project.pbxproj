@@ -7,6 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3501D01A2383BBB700EADA08 /* PaymentSuccessItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501D0192383BBB700EADA08 /* PaymentSuccessItemsTableViewCell.swift */; };
+		3501D0262383CC5300EADA08 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3501D01B2383CC5200EADA08 /* Lato-LightItalic.ttf */; };
+		3501D0272383CC5300EADA08 /* Lato-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3501D01C2383CC5200EADA08 /* Lato-Italic.ttf */; };
+		3501D0282383CC5300EADA08 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3501D01D2383CC5300EADA08 /* Lato-Light.ttf */; };
+		3501D0292383CC5300EADA08 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3501D01E2383CC5300EADA08 /* Lato-Regular.ttf */; };
+		3501D02A2383CC5300EADA08 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3501D01F2383CC5300EADA08 /* Lato-Black.ttf */; };
+		3501D02B2383CC5300EADA08 /* Lato-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3501D0202383CC5300EADA08 /* Lato-Thin.ttf */; };
+		3501D02C2383CC5300EADA08 /* Lato-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3501D0212383CC5300EADA08 /* Lato-ThinItalic.ttf */; };
+		3501D02D2383CC5300EADA08 /* OFL.txt in Resources */ = {isa = PBXBuildFile; fileRef = 3501D0222383CC5300EADA08 /* OFL.txt */; };
+		3501D02E2383CC5300EADA08 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3501D0232383CC5300EADA08 /* Lato-Bold.ttf */; };
+		3501D02F2383CC5300EADA08 /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3501D0242383CC5300EADA08 /* Lato-BlackItalic.ttf */; };
+		3501D0302383CC5300EADA08 /* Lato-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3501D0252383CC5300EADA08 /* Lato-BoldItalic.ttf */; };
+		3501D0322383F1B400EADA08 /* ItemHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501D0312383F1B400EADA08 /* ItemHeaderView.swift */; };
 		350671AB23839DF3000669EC /* PaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350671AA23839DF3000669EC /* PaymentMethodsViewController.swift */; };
 		350671AD23839E0B000669EC /* PaymentSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350671AC23839E0B000669EC /* PaymentSuccessViewController.swift */; };
 		350671AF23839F1A000669EC /* PaymentMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350671AE23839F1A000669EC /* PaymentMethodTableViewCell.swift */; };
@@ -30,6 +43,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3501D0192383BBB700EADA08 /* PaymentSuccessItemsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessItemsTableViewCell.swift; sourceTree = "<group>"; };
+		3501D01B2383CC5200EADA08 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-LightItalic.ttf"; path = "../../../Downloads/Lato/Lato-LightItalic.ttf"; sourceTree = "<group>"; };
+		3501D01C2383CC5200EADA08 /* Lato-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Italic.ttf"; path = "../../../Downloads/Lato/Lato-Italic.ttf"; sourceTree = "<group>"; };
+		3501D01D2383CC5300EADA08 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Light.ttf"; path = "../../../Downloads/Lato/Lato-Light.ttf"; sourceTree = "<group>"; };
+		3501D01E2383CC5300EADA08 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Regular.ttf"; path = "../../../Downloads/Lato/Lato-Regular.ttf"; sourceTree = "<group>"; };
+		3501D01F2383CC5300EADA08 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Black.ttf"; path = "../../../Downloads/Lato/Lato-Black.ttf"; sourceTree = "<group>"; };
+		3501D0202383CC5300EADA08 /* Lato-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Thin.ttf"; path = "../../../Downloads/Lato/Lato-Thin.ttf"; sourceTree = "<group>"; };
+		3501D0212383CC5300EADA08 /* Lato-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-ThinItalic.ttf"; path = "../../../Downloads/Lato/Lato-ThinItalic.ttf"; sourceTree = "<group>"; };
+		3501D0222383CC5300EADA08 /* OFL.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = OFL.txt; path = ../../../Downloads/Lato/OFL.txt; sourceTree = "<group>"; };
+		3501D0232383CC5300EADA08 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-Bold.ttf"; path = "../../../Downloads/Lato/Lato-Bold.ttf"; sourceTree = "<group>"; };
+		3501D0242383CC5300EADA08 /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-BlackItalic.ttf"; path = "../../../Downloads/Lato/Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
+		3501D0252383CC5300EADA08 /* Lato-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Lato-BoldItalic.ttf"; path = "../../../Downloads/Lato/Lato-BoldItalic.ttf"; sourceTree = "<group>"; };
+		3501D0312383F1B400EADA08 /* ItemHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemHeaderView.swift; sourceTree = "<group>"; };
 		350671AA23839DF3000669EC /* PaymentMethodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsViewController.swift; sourceTree = "<group>"; };
 		350671AC23839E0B000669EC /* PaymentSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessViewController.swift; sourceTree = "<group>"; };
 		350671AE23839F1A000669EC /* PaymentMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodTableViewCell.swift; sourceTree = "<group>"; };
@@ -92,6 +118,17 @@
 				35AA411923830BAF005060CD /* ItemListingViewController.swift */,
 				35AA411B23830CD0005060CD /* ItemListingItemsTableViewCell.swift */,
 				359E6F0A2382E5050002A54F /* Main.storyboard */,
+				3501D01F2383CC5300EADA08 /* Lato-Black.ttf */,
+				3501D0242383CC5300EADA08 /* Lato-BlackItalic.ttf */,
+				3501D0232383CC5300EADA08 /* Lato-Bold.ttf */,
+				3501D0252383CC5300EADA08 /* Lato-BoldItalic.ttf */,
+				3501D01C2383CC5200EADA08 /* Lato-Italic.ttf */,
+				3501D01D2383CC5300EADA08 /* Lato-Light.ttf */,
+				3501D01B2383CC5200EADA08 /* Lato-LightItalic.ttf */,
+				3501D01E2383CC5300EADA08 /* Lato-Regular.ttf */,
+				3501D0202383CC5300EADA08 /* Lato-Thin.ttf */,
+				3501D0212383CC5300EADA08 /* Lato-ThinItalic.ttf */,
+				3501D0222383CC5300EADA08 /* OFL.txt */,
 				35AA411723830A4A005060CD /* ItemPrevOrderedCollectionViewCell.swift */,
 				359E6F182382F7E90002A54F /* PrevOrderedCollectionViewCell.swift */,
 				359E6F1A2382FBE60002A54F /* RestaurantTableViewCell.swift */,
@@ -99,9 +136,11 @@
 				359E6F162382F77C0002A54F /* ProfileViewController.swift */,
 				350671B02383A94F000669EC /* ProfileActiveCollectionViewCell.swift */,
 				359E6F142382F7640002A54F /* CartViewController.swift */,
+				3501D0312383F1B400EADA08 /* ItemHeaderView.swift */,
 				350671AA23839DF3000669EC /* PaymentMethodsViewController.swift */,
 				350671AE23839F1A000669EC /* PaymentMethodTableViewCell.swift */,
 				350671AC23839E0B000669EC /* PaymentSuccessViewController.swift */,
+				3501D0192383BBB700EADA08 /* PaymentSuccessItemsTableViewCell.swift */,
 				359E6EDE2382E1900002A54F /* Assets.xcassets */,
 				359E6EE02382E1900002A54F /* LaunchScreen.storyboard */,
 				359E6EE32382E1900002A54F /* Info.plist */,
@@ -167,9 +206,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3501D0272383CC5300EADA08 /* Lato-Italic.ttf in Resources */,
+				3501D02D2383CC5300EADA08 /* OFL.txt in Resources */,
+				3501D02B2383CC5300EADA08 /* Lato-Thin.ttf in Resources */,
 				359E6EE22382E1900002A54F /* LaunchScreen.storyboard in Resources */,
 				359E6EDF2382E1900002A54F /* Assets.xcassets in Resources */,
+				3501D0302383CC5300EADA08 /* Lato-BoldItalic.ttf in Resources */,
+				3501D02F2383CC5300EADA08 /* Lato-BlackItalic.ttf in Resources */,
+				3501D0282383CC5300EADA08 /* Lato-Light.ttf in Resources */,
+				3501D02A2383CC5300EADA08 /* Lato-Black.ttf in Resources */,
+				3501D02E2383CC5300EADA08 /* Lato-Bold.ttf in Resources */,
+				3501D0292383CC5300EADA08 /* Lato-Regular.ttf in Resources */,
+				3501D02C2383CC5300EADA08 /* Lato-ThinItalic.ttf in Resources */,
 				359E6F0B2382E5060002A54F /* Main.storyboard in Resources */,
+				3501D0262383CC5300EADA08 /* Lato-LightItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,6 +233,8 @@
 				350671AB23839DF3000669EC /* PaymentMethodsViewController.swift in Sources */,
 				359E6F1B2382FBE60002A54F /* RestaurantTableViewCell.swift in Sources */,
 				359E6EDA2382E18E0002A54F /* ViewController.swift in Sources */,
+				3501D0322383F1B400EADA08 /* ItemHeaderView.swift in Sources */,
+				3501D01A2383BBB700EADA08 /* PaymentSuccessItemsTableViewCell.swift in Sources */,
 				35AA411A23830BAF005060CD /* ItemListingViewController.swift in Sources */,
 				35AA411823830A4A005060CD /* ItemPrevOrderedCollectionViewCell.swift in Sources */,
 				359E6F132382F70D0002A54F /* tabBarController.swift in Sources */,

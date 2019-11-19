@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemListingViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate{
+class ItemListingViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UICollectionViewDataSource,UICollectionViewDelegate,UISearchBarDelegate{
 
     @IBOutlet var mainView: UIView!
     
@@ -31,12 +31,20 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
     
     @IBOutlet weak var cartDetails: UILabel!
     
+    var restroName = " "
+    var restaurantTags = " "
     
     let preferences = UserDefaults.standard
     
+    var filteredItems = [itemDetails]()
+    
     var curItems = [itemDetails]()
     
+    var sectionDict = ["Lunch","Desserts","Breakfast"]
+    var sectionTimes = ["9AM - 12:00 PM","All Times","7PM - 11:30 PM"]
     var price = 0
+    
+    var searchOn = false
     
     var items = 0{
         didSet{
@@ -58,9 +66,24 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
         }
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchOn = false
+        if(!searchText.isEmpty){
+           searchOn = true
+        filteredItems = curItems.filter({ curItem -> Bool in
+            return (curItem.name.lowercased().contains(searchText.lowercased()) ||
+                curItem.name.lowercased().contains(searchText.lowercased()))
+        })
+        }
+        self.itemListingTableView.reloadData()
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        itemListingRestaurantName.text = restroName
+        itemListingRestaurantTags.text = restaurantTags
         tableViewHeight.constant = itemListingTableView.contentSize.height
         scrollView.isScrollEnabled = true
         scrollView.contentSize.height = UIScreen.main.bounds.height + 10000
@@ -70,11 +93,12 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
         cartView.layer.borderColor = UIColor(named: "secondary")?.cgColor
         cartView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
         cartView.isHidden = true
+        itemSearchBar.delegate = self
        
         if  preferences.object(forKey: "selectedItems") != nil{
              selectedItems = NSKeyedUnarchiver.unarchiveObject(with: preferences.object(forKey: "selectedItems") as! Data) as! [Item]
             for it in selectedItems{
-                price += Int(it.price.components(separatedBy: " ")[1])!
+                price += (it.qty*Int(it.price.components(separatedBy: " ")[1])!)
                 items+=it.qty
             }
         }
@@ -93,32 +117,67 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
         scrollView.contentSize.height = UIScreen.main.bounds.height + 1000
     }
     
+     override func viewWillLayoutSubviews() {
+         super.updateViewConstraints()
+        tableViewHeight.constant = itemListingTableView.contentSize.height
+     }
+     
+    
     func numberOfSections(in tableView: UITableView) -> Int {
+        if(searchOn){
+            return 1
+        }
         return 3
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        if(searchOn){
+        return filteredItems.count
+        }
+        else{
+        return curItems.count
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewWillLayoutSubviews()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemTableViewCell") as! ItemListingItemsTableViewCell
-        cell.itemName.text = curItems[indexPath.row].name
-        cell.itemPrice.text = curItems[indexPath.row].price
-        cell.itemType.image = curItems[indexPath.row].itemType
         var found = false
-        var curSelectedItem  = Item.init(itemName: "", price: "", itemType: UIImage(), qty: 0)
+        var curSelectedItem  = Item.init(itemName: "", price: "", itemType: UIImage(), qty: 0,restaurantName: restroName)
+          
+        if(searchOn){
             for it in selectedItems{
-                if(it.itemName == curItems[indexPath.row].name){
+                           if(it.itemName == filteredItems[indexPath.row].name && it.restaurantName == restroName){
+                               found = true
+                               curSelectedItem = it
+                            
+                               
+                           }
+        }
+            cell.itemName.text = filteredItems[indexPath.row].name
+                   cell.itemPrice.text = filteredItems[indexPath.row].price
+                   cell.itemType.image = filteredItems[indexPath.row].itemType
+        }
+            else{
+            for it in selectedItems{
+                if(it.itemName == curItems[indexPath.row].name && it.restaurantName == restroName){
                     found = true
                     curSelectedItem = it
                     
                 }
+                
+        }
+            cell.itemName.text = curItems[indexPath.row].name
+                   cell.itemPrice.text = curItems[indexPath.row].price
+                   cell.itemType.image = curItems[indexPath.row].itemType
             }
         
         if(found){
             cell.itemAdd.setTitle(String(curSelectedItem.qty), for: .normal)
-            print(curItems[indexPath.row].name + "  found")
+//            print(curItems[indexPath.row].name + "  found")
 
             cell.itemMinus.isHidden = false
             cell.itemPlus.isHidden = false
@@ -126,7 +185,7 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
             cell.buttonsView.backgroundColor = UIColor(named: "secondary")
         }
         else{
-            print(curItems[indexPath.row].name + "  not found")
+//            print(curItems[indexPath.row].name + "  not found")
             cell.itemPlus.isHidden = true
             cell.itemMinus.isHidden = true
             cell.buttonsView.backgroundColor = UIColor.white
@@ -142,10 +201,20 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
         cell.buttonsView.layer.borderColor = UIColor(named: "secondary")?.cgColor
         cell.buttonsView.layer.borderWidth = 1
         cell.buttonsView.layer.cornerRadius = 16
-        cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 16
-        cell.layer.borderColor = UIColor(named: "focus")?.cgColor
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerCell = tableView.dequeueReusableCell(withIdentifier: "headerCell") as! ItemHeaderView
+        headerCell.sectionName.text = sectionDict[section]
+        headerCell.sectionTimeRange.text = sectionTimes[section]
+        headerCell.sectionTimeRange.textColor = UIColor(named: "text light")
+        headerCell.sectionSeperator.backgroundColor = UIColor(named: "focus")
+        return headerCell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 128
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -186,24 +255,34 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
         curItems.append(itemDetails.init(name: "Warm Apple Crostata", price: "Rs. 123", itemType: UIImage(named: "icVeg")!))
     }
     
+    
     @objc func itemMinusClicked(sender: UIButton){
         let row = sender.tag
         price -= Int(curItems[row].price.components(separatedBy: " ")[1])!
         items -= 1
         
         var ind = -1
-        
-        for i in 0...selectedItems.count-1{
-            if(selectedItems[i].itemName == curItems[row].name){
-                ind = 1
-            }
-        }
-
-        if(items > 1){
-            var qty = selectedItems[ind].qty - 1
-            selectedItems[ind] = Item.init(itemName: selectedItems[ind].itemName, price: selectedItems[ind].price, itemType: selectedItems[ind].itemType, qty: qty)
+        if(searchOn){
+            for i in 0...selectedItems.count-1{
+                if(selectedItems[i].itemName == filteredItems[row].name && selectedItems[i].restaurantName == restroName){
+                           ind = i
+                       }
+                   }
         }
         else{
+        for i in 0...selectedItems.count-1{
+            if(selectedItems[i].itemName == curItems[row].name && selectedItems[i].restaurantName == restroName){
+                ind = i
+            }
+        }
+        }
+
+        if(selectedItems[ind].qty > 1){
+            var qty = selectedItems[ind].qty - 1
+            selectedItems[ind] = Item.init(itemName: selectedItems[ind].itemName, price: selectedItems[ind].price, itemType: selectedItems[ind].itemType, qty: qty,restaurantName:  selectedItems[ind].restaurantName)
+        }
+        else{
+            print(ind)
             selectedItems.remove(at: ind)
         }
     }
@@ -211,8 +290,14 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
     @objc func itemAddClicked(sender: UIButton){
         let row = sender.tag
         price += Int(curItems[row].price.components(separatedBy: " ")[1])!
-        items+=1
-        selectedItems.append(Item.init(itemName: curItems[row].name, price: curItems[row].price, itemType: curItems[row].itemType, qty: 1))
+        items += 1
+        print(restroName)
+        if(searchOn){
+            selectedItems.append(Item.init(itemName: filteredItems[row].name, price: filteredItems[row].price, itemType: filteredItems[row].itemType, qty: 1,restaurantName:  restroName))
+        }
+        else{
+        selectedItems.append(Item.init(itemName: curItems[row].name, price: curItems[row].price, itemType: curItems[row].itemType, qty: 1,restaurantName:  restroName))
+        }
     }
     
     @objc func itemPlusClicked(sender: UIButton){
@@ -220,15 +305,26 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
         price += Int(curItems[row].price.components(separatedBy: " ")[1])!
         items += 1
         var ind  = -1
+        if(searchOn){
+            for i in 0...selectedItems.count-1{
+                      if(selectedItems[i].itemName == filteredItems[row].name && selectedItems[i].restaurantName == restroName){
+                          ind = i
+                      }
+                  }
+        }
+        else{
         for i in 0...selectedItems.count-1{
-            if(selectedItems[i].itemName == curItems[row].name){
-                ind = 1
+            if(selectedItems[i].itemName == curItems[row].name && selectedItems[i].restaurantName == restroName){
+                ind = i
             }
         }
+        }
         var qty = selectedItems[ind].qty + 1
-                   selectedItems[ind] = Item.init(itemName: selectedItems[ind].itemName, price: selectedItems[ind].price, itemType: selectedItems[ind].itemType, qty: qty)
+        selectedItems[ind] = Item.init(itemName: selectedItems[ind].itemName, price: selectedItems[ind].price, itemType: selectedItems[ind].itemType, qty: qty,restaurantName: selectedItems[ind].restaurantName)
         
     }
+    
+    
     
     @objc(_TtCC17foodConsumerDummy25ItemListingViewController4Item)class Item : NSObject,NSCoding{
     
@@ -236,12 +332,14 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
         let price : String
         let itemType : UIImage
         let qty : Int
+        let restaurantName : String
         
-        init(itemName:String,price:String,itemType:UIImage,qty:Int){
+        init(itemName:String,price:String,itemType:UIImage,qty:Int,restaurantName: String){
             self.itemType = itemType
             self.itemName = itemName
             self.price = price
             self.qty = qty
+            self.restaurantName = restaurantName
         }
         
         func encode(with coder: NSCoder) {
@@ -249,6 +347,7 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
             coder.encode(price, forKey: "price")
             coder.encode(itemType, forKey: "itemType")
             coder.encode(qty, forKey: "qty")
+            coder.encode(restaurantName, forKey: "restaurantName")
             }
             
        required init?(coder: NSCoder) {
@@ -256,6 +355,7 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
         price = coder.decodeObject(forKey: "price") as! String
         itemType = coder.decodeObject(forKey: "itemType") as! UIImage
         qty = coder.decodeInteger(forKey: "qty")
+        restaurantName = coder.decodeObject(forKey: "restaurantName") as! String
             }
     }
 

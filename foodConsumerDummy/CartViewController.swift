@@ -52,7 +52,28 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     var selectedItems = [ItemListingViewController.Item](){
         didSet{
-            
+            if(items > 0){
+                scrollview.isHidden = false
+                emptyCartView.isHidden = true
+                var selectedListData = NSKeyedArchiver.archivedData(withRootObject: selectedItems)
+                preferences.set(selectedListData, forKey: "selectedItems")
+                var item_val = 0
+                var price_val = 0
+                for it in selectedItems{
+                    item_val += it.qty
+                    price_val += (it.qty * Int(it.price.components(separatedBy: " ")[1])!)
+                }
+                var taxValue = Int(Double(price_val)*0.05)
+                payBtn.setTitle("Pay · " + String(price_val+taxValue), for: .normal)
+                cartItemsQty.text = String(items)+" Items Ordered"
+                cartTableView.reloadData()
+            }
+            else{
+                scrollview.isHidden = true
+                emptyCartView.isHidden = false
+                emptyCartBtn.setTitleColor(UIColor(named: "oyo_red"), for: .normal)
+                emptyCartBtn.setTitle("PLACE NEW ORDER", for: .normal)
+            }
         }
     }
     
@@ -62,16 +83,50 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        cartTableViewHeight.constant = cartTableView.contentSize.height
+        tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(named: "oyo_red")], for: .selected)
         
+        emptyCartBtn.setTitleColor(UIColor(named: "oyo_red"), for: .normal)
+        emptyCartBtn.setTitle("PLACE NEW ORDER", for: .normal)
+        
+        payBtn.backgroundColor = UIColor(named: "secondary")
+        
+    
        if  preferences.object(forKey: "selectedItems") != nil{
         selectedItems = NSKeyedUnarchiver.unarchiveObject(with: preferences.object(forKey: "selectedItems") as! Data) as! [ItemListingViewController.Item]
             for it in selectedItems{
-                price += Int(it.price.components(separatedBy: " ")[1])!
+                price += (it.qty * Int(it.price.components(separatedBy: " ")[1])!)
                 items+=it.qty
             }
+        var taxValue = Int(Double(price)*0.05)
+        payBtn.setTitle("Pay · " + String(price+taxValue), for: .normal)
+        cartItemsQty.text = String(items)+" Items Ordered"
         }
+        
+        if(items == 0){
+           scrollview.isHidden = true
+           emptyCartView.isHidden = false
+           emptyCartBtn.setTitleColor(UIColor(named: "oyo_red"), for: .normal)
+           emptyCartBtn.setTitle("PLACE NEW ORDER", for: .normal)
+        }
+        else{
+            scrollview.isHidden = false
+            var taxValue = Int(Double(price)*0.05)
+            payBtn.setTitle("Pay · " + String(price+taxValue), for: .normal)
+            emptyCartView.isHidden = true
+        }
+        
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        cartTableViewHeight.constant = cartTableView.contentSize.height
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.updateViewConstraints()
+       cartTableViewHeight.constant = cartTableView.contentSize.height
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -89,10 +144,40 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cell.buttonsView.layer.borderWidth = 1
         cell.buttonsView.layer.borderColor = UIColor(named: "secondary")?.cgColor
         cell.buttonsView.layer.cornerRadius = 16
+        cell.itemMinus.tag = indexPath.row
+        cell.itemPlus.tag = indexPath.row
+        cell.itemMinus.addTarget(self, action: #selector(itemMinusClicked(sender:)), for: .touchUpInside)
+        cell.itemPlus.tag = indexPath.row
+        cell.itemPlus.addTarget(self, action: #selector(itemPlusClicked(sender:)), for: .touchUpInside)
         cell.itemPlus.setImage(UIImage(named: "icAddGreen"), for: .normal)
         cell.itemMinus.setImage(UIImage(named: "icMinusGreen"), for: .normal)
         return cell
      }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        self.viewWillLayoutSubviews()
+    }
+    
+    
+    @objc func itemMinusClicked(sender: UIButton){
+        var row = sender.tag
+        if(selectedItems[row].qty > 1){
+            items -= 1
+            price -= Int(selectedItems[row].price.components(separatedBy: " ")[1])!
+             selectedItems[row] = ItemListingViewController.Item.init(itemName: selectedItems[row].itemName, price: selectedItems[row].price, itemType: selectedItems[row].itemType, qty: selectedItems[row].qty-1, restaurantName: selectedItems[row].restaurantName)
+        }
+        else{
+            selectedItems.remove(at: row)
+        }
+    }
+    
+    @objc func itemPlusClicked(sender: UIButton){
+        var row = sender.tag
+        items+=1
+        price += Int(selectedItems[row].price.components(separatedBy: " ")[1])!
+        selectedItems[row] = ItemListingViewController.Item.init(itemName: selectedItems[row].itemName, price: selectedItems[row].price, itemType: selectedItems[row].itemType, qty: selectedItems[row].qty+1, restaurantName: selectedItems[row].restaurantName)
+    }
+    
      
     
 

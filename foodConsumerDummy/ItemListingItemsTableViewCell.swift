@@ -42,12 +42,12 @@ class ItemListingItemsTableViewCell: UITableViewCell {
     
     @IBAction func itemAddClick(_ sender: Any) {
         itemAdd.setTitle("1", for: .normal)
+        itemMinus.isHidden = true
+        itemPlus.isHidden = true
         itemAdd.isEnabled = false
         buttonsView.backgroundColor = UIColor(named: "secondary")
         buttonsView.layer.borderColor = UIColor(named: "secondary")?.cgColor
         itemAdd.setTitleColor(UIColor.white, for: .normal)
-        itemMinus.isHidden = false
-        itemPlus.isHidden = false
     }
     
     @IBAction func itemPlusClick(_ sender: Any) {

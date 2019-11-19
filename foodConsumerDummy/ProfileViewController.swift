@@ -36,6 +36,7 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(named: "oyo_red")], for: .selected)
     viewOlderOrdersBtn.setTitleColor(UIColor(named: "oyo_red"), for: .normal)
            
         // Do any additional setup after loading the view.
