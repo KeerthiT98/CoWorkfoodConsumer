@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		350671AB23839DF3000669EC /* PaymentMethodsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350671AA23839DF3000669EC /* PaymentMethodsViewController.swift */; };
+		350671AD23839E0B000669EC /* PaymentSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350671AC23839E0B000669EC /* PaymentSuccessViewController.swift */; };
+		350671AF23839F1A000669EC /* PaymentMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350671AE23839F1A000669EC /* PaymentMethodTableViewCell.swift */; };
+		350671B12383A94F000669EC /* ProfileActiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350671B02383A94F000669EC /* ProfileActiveCollectionViewCell.swift */; };
 		359E6ED62382E18E0002A54F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359E6ED52382E18E0002A54F /* AppDelegate.swift */; };
 		359E6ED82382E18E0002A54F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359E6ED72382E18E0002A54F /* SceneDelegate.swift */; };
 		359E6EDA2382E18E0002A54F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359E6ED92382E18E0002A54F /* ViewController.swift */; };
@@ -26,6 +30,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		350671AA23839DF3000669EC /* PaymentMethodsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodsViewController.swift; sourceTree = "<group>"; };
+		350671AC23839E0B000669EC /* PaymentSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessViewController.swift; sourceTree = "<group>"; };
+		350671AE23839F1A000669EC /* PaymentMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodTableViewCell.swift; sourceTree = "<group>"; };
+		350671B02383A94F000669EC /* ProfileActiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActiveCollectionViewCell.swift; sourceTree = "<group>"; };
 		359E6ED22382E18E0002A54F /* foodConsumerDummy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foodConsumerDummy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		359E6ED52382E18E0002A54F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		359E6ED72382E18E0002A54F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,7 +97,11 @@
 				359E6F1A2382FBE60002A54F /* RestaurantTableViewCell.swift */,
 				359E6F122382F70D0002A54F /* tabBarController.swift */,
 				359E6F162382F77C0002A54F /* ProfileViewController.swift */,
+				350671B02383A94F000669EC /* ProfileActiveCollectionViewCell.swift */,
 				359E6F142382F7640002A54F /* CartViewController.swift */,
+				350671AA23839DF3000669EC /* PaymentMethodsViewController.swift */,
+				350671AE23839F1A000669EC /* PaymentMethodTableViewCell.swift */,
+				350671AC23839E0B000669EC /* PaymentSuccessViewController.swift */,
 				359E6EDE2382E1900002A54F /* Assets.xcassets */,
 				359E6EE02382E1900002A54F /* LaunchScreen.storyboard */,
 				359E6EE32382E1900002A54F /* Info.plist */,
@@ -168,6 +180,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				350671AB23839DF3000669EC /* PaymentMethodsViewController.swift in Sources */,
 				359E6F1B2382FBE60002A54F /* RestaurantTableViewCell.swift in Sources */,
 				359E6EDA2382E18E0002A54F /* ViewController.swift in Sources */,
 				35AA411A23830BAF005060CD /* ItemListingViewController.swift in Sources */,
@@ -177,7 +190,10 @@
 				359E6F152382F7640002A54F /* CartViewController.swift in Sources */,
 				359E6ED62382E18E0002A54F /* AppDelegate.swift in Sources */,
 				359E6ED82382E18E0002A54F /* SceneDelegate.swift in Sources */,
+				350671B12383A94F000669EC /* ProfileActiveCollectionViewCell.swift in Sources */,
+				350671AF23839F1A000669EC /* PaymentMethodTableViewCell.swift in Sources */,
 				359E6F0D2382EE390002A54F /* BuildingTableViewCell.swift in Sources */,
+				350671AD23839E0B000669EC /* PaymentSuccessViewController.swift in Sources */,
 				359E6F172382F77C0002A54F /* ProfileViewController.swift in Sources */,
 				359E6F112382F0D50002A54F /* HomeViewController.swift in Sources */,
 				35AA411C23830CD0005060CD /* ItemListingItemsTableViewCell.swift in Sources */,

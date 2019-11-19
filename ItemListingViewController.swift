@@ -61,6 +61,9 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        tableViewHeight.constant = itemListingTableView.contentSize.height
+        scrollView.isScrollEnabled = true
+        scrollView.contentSize.height = UIScreen.main.bounds.height + 10000
         setupItemDetails()
         cartView.backgroundColor = UIColor(named: "secondary")
         cartView.layer.borderWidth = 1
@@ -78,10 +81,16 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
         
     }
     
+//    override func updateViewConstraints() {
+//        tableViewHeight.constant = itemListingTableView.contentSize.height
+//        scrollView.isScrollEnabled = true
+//        scrollView.contentSize.height = UIScreen.main.bounds.height + 1000
+//    }
+    
     override func viewDidAppear(_ animated: Bool) {
         tableViewHeight.constant = itemListingTableView.contentSize.height
         scrollView.isScrollEnabled = true
-        scrollView.contentSize.height = UIScreen.main.bounds.height
+        scrollView.contentSize.height = UIScreen.main.bounds.height + 1000
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -97,21 +106,32 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
         cell.itemName.text = curItems[indexPath.row].name
         cell.itemPrice.text = curItems[indexPath.row].price
         cell.itemType.image = curItems[indexPath.row].itemType
-        
-        if(selectedItems.count==0){
-        cell.itemPlus.isHidden = true
-        cell.itemMinus.isHidden = true
-        cell.itemAdd.setTitle("ADD", for: .normal)
-        cell.itemAdd.setTitleColor(UIColor(named: "secondary"), for: .normal)
-        }
-        else{
+        var found = false
+        var curSelectedItem  = Item.init(itemName: "", price: "", itemType: UIImage(), qty: 0)
             for it in selectedItems{
                 if(it.itemName == curItems[indexPath.row].name){
-                    cell.itemAdd.setTitle(String(it.qty), for: .normal)
-                    cell.itemAdd.setTitleColor(UIColor.white, for: .normal)
-                    cell.buttonsView.backgroundColor = UIColor(named: "secondary")
+                    found = true
+                    curSelectedItem = it
+                    
                 }
             }
+        
+        if(found){
+            cell.itemAdd.setTitle(String(curSelectedItem.qty), for: .normal)
+            print(curItems[indexPath.row].name + "  found")
+
+            cell.itemMinus.isHidden = false
+            cell.itemPlus.isHidden = false
+            cell.itemAdd.setTitleColor(UIColor.white, for: .normal)
+            cell.buttonsView.backgroundColor = UIColor(named: "secondary")
+        }
+        else{
+            print(curItems[indexPath.row].name + "  not found")
+            cell.itemPlus.isHidden = true
+            cell.itemMinus.isHidden = true
+            cell.buttonsView.backgroundColor = UIColor.white
+            cell.itemAdd.setTitle("ADD", for: .normal)
+            cell.itemAdd.setTitleColor(UIColor(named: "secondary"), for: .normal)
         }
         cell.itemMinus.tag = indexPath.row
         cell.itemMinus.addTarget(self, action: #selector(itemMinusClicked(sender:)), for: .touchUpInside)

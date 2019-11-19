@@ -82,9 +82,13 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         let cell = tableView.dequeueReusableCell(withIdentifier: "itemTableViewCell") as! ItemListingItemsTableViewCell
         cell.itemName.text = selectedItems[indexPath.row].itemName
         cell.itemPrice.text = selectedItems[indexPath.row].price
+        cell.itemType.image = selectedItems[indexPath.row].itemType
         cell.itemAdd.setTitle(String(selectedItems[indexPath.row].qty), for: .normal)
         cell.itemAdd.setTitleColor(UIColor(named: "secondary"), for: .normal)
         cell.buttonsView.backgroundColor = UIColor.white
+        cell.buttonsView.layer.borderWidth = 1
+        cell.buttonsView.layer.borderColor = UIColor(named: "secondary")?.cgColor
+        cell.buttonsView.layer.cornerRadius = 16
         cell.itemPlus.setImage(UIImage(named: "icAddGreen"), for: .normal)
         cell.itemMinus.setImage(UIImage(named: "icMinusGreen"), for: .normal)
         return cell
