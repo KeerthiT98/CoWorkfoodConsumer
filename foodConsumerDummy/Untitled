@@ -1,0 +1,79 @@
+diff --git a/.DS_Store b/.DS_Store
+index a1a21d2..61d2840 100644
+Binary files a/.DS_Store and b/.DS_Store differ
+diff --git a/CoWorkingFood-iOSConsumerApp/.DS_Store b/CoWorkingFood-iOSConsumerApp/.DS_Store
+new file mode 100644
+index 0000000..c7d51a9
+Binary files /dev/null and b/CoWorkingFood-iOSConsumerApp/.DS_Store differ
+diff --git a/SampleApp b/SampleApp
+index 483ede9..b597242 160000
+--- a/SampleApp
++++ b/SampleApp
+@@ -1 +1 @@
+-Subproject commit 483ede9528dc60d27c2734f9e2bf111e334fd426
++Subproject commit b5972424a8ef614032eb41eea20b43c9d5edfe1e
+diff --git a/SampleApp.xcodeproj/project.pbxproj b/SampleApp.xcodeproj/project.pbxproj
+index abb1614..48142cb 100644
+--- a/SampleApp.xcodeproj/project.pbxproj
++++ b/SampleApp.xcodeproj/project.pbxproj
+@@ -23,7 +23,6 @@
+ 		358EE99A237031410051407A /* ItemListingItemsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 358EE999237031410051407A /* ItemListingItemsTableViewCell.swift */; };
+ 		359824952345C7F7003C42CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359824942345C7F7003C42CA /* AppDelegate.swift */; };
+ 		359824992345C7F7003C42CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359824982345C7F7003C42CA /* ViewController.swift */; };
+-		3598249E2345C7F9003C42CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3598249D2345C7F9003C42CA /* Assets.xcassets */; };
+ 		359824A12345C7F9003C42CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3598249F2345C7F9003C42CA /* LaunchScreen.storyboard */; };
+ 		359824AC2345C7FA003C42CA /* SampleAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359824AB2345C7FA003C42CA /* SampleAppTests.swift */; };
+ 		359824B72345C7FA003C42CA /* SampleAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359824B62345C7FA003C42CA /* SampleAppUITests.swift */; };
+@@ -74,7 +73,6 @@
+ 		359824912345C7F7003C42CA /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+ 		359824942345C7F7003C42CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+ 		359824982345C7F7003C42CA /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+-		3598249D2345C7F9003C42CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+ 		359824A02345C7F9003C42CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+ 		359824A22345C7F9003C42CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+ 		359824A72345C7FA003C42CA /* SampleAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SampleAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+@@ -162,7 +160,6 @@
+ 				350F09172376CD6300E768BE /* Item.swift */,
+ 				3523F81D2371776600E4DB30 /* ItemHeaderView.swift */,
+ 				3523F81E2371776600E4DB30 /* ItemHeaderView.xib */,
+-				3598249D2345C7F9003C42CA /* Assets.xcassets */,
+ 				3598249F2345C7F9003C42CA /* LaunchScreen.storyboard */,
+ 				351D1B1423669AA5005FC119 /* PrevOrderedCollectionCell.swift */,
+ 				359824A22345C7F9003C42CA /* Info.plist */,
+@@ -303,7 +300,6 @@
+ 				351D1B1223657DAB005FC119 /* lato_bold.ttf in Resources */,
+ 				359824A12345C7F9003C42CA /* LaunchScreen.storyboard in Resources */,
+ 				352B78C1236D229A00416272 /* Main.storyboard in Resources */,
+-				3598249E2345C7F9003C42CA /* Assets.xcassets in Resources */,
+ 				351D1B1323657DAB005FC119 /* lato_regular.ttf in Resources */,
+ 			);
+ 			runOnlyForDeploymentPostprocessing = 0;
+diff --git a/SampleApp.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings b/SampleApp.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+index f9b0d7c..6b30c74 100644
+--- a/SampleApp.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
++++ b/SampleApp.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings
+@@ -2,6 +2,8 @@
+ <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+ <plist version="1.0">
+ <dict>
++	<key>BuildSystemType</key>
++	<string>Original</string>
+ 	<key>PreviewsEnabled</key>
+ 	<false/>
+ </dict>
+diff --git a/SampleApp.xcodeproj/project.xcworkspace/xcuserdata/oyo.xcuserdatad/UserInterfaceState.xcuserstate b/SampleApp.xcodeproj/project.xcworkspace/xcuserdata/oyo.xcuserdatad/UserInterfaceState.xcuserstate
+index 261501b..4b1eeee 100644
+Binary files a/SampleApp.xcodeproj/project.xcworkspace/xcuserdata/oyo.xcuserdatad/UserInterfaceState.xcuserstate and b/SampleApp.xcodeproj/project.xcworkspace/xcuserdata/oyo.xcuserdatad/UserInterfaceState.xcuserstate differ
+diff --git a/SampleApp.xcodeproj/project.xcworkspace/xcuserdata/oyo.xcuserdatad/WorkspaceSettings.xcsettings b/SampleApp.xcodeproj/project.xcworkspace/xcuserdata/oyo.xcuserdatad/WorkspaceSettings.xcsettings
+index dd7403b..8c8a469 100644
+--- a/SampleApp.xcodeproj/project.xcworkspace/xcuserdata/oyo.xcuserdatad/WorkspaceSettings.xcsettings
++++ b/SampleApp.xcodeproj/project.xcworkspace/xcuserdata/oyo.xcuserdatad/WorkspaceSettings.xcsettings
+@@ -4,6 +4,8 @@
+ <dict>
+ 	<key>BuildLocationStyle</key>
+ 	<string>UseAppPreferences</string>
++	<key>BuildSystemType</key>
++	<string>Original</string>
+ 	<key>CustomBuildLocationType</key>
+ 	<string>RelativeToDerivedData</string>
+ 	<key>DerivedDataLocationStyle</key>
