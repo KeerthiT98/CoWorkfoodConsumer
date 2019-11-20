@@ -24,6 +24,8 @@
 		350671AD23839E0B000669EC /* PaymentSuccessViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350671AC23839E0B000669EC /* PaymentSuccessViewController.swift */; };
 		350671AF23839F1A000669EC /* PaymentMethodTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350671AE23839F1A000669EC /* PaymentMethodTableViewCell.swift */; };
 		350671B12383A94F000669EC /* ProfileActiveCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 350671B02383A94F000669EC /* ProfileActiveCollectionViewCell.swift */; };
+		351140512384DDE300A61BB6 /* Responses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351140502384DDE300A61BB6 /* Responses.swift */; };
+		3511405323851D3B00A61BB6 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3511405223851D3B00A61BB6 /* Requests.swift */; };
 		359E6ED62382E18E0002A54F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359E6ED52382E18E0002A54F /* AppDelegate.swift */; };
 		359E6ED82382E18E0002A54F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359E6ED72382E18E0002A54F /* SceneDelegate.swift */; };
 		359E6EDA2382E18E0002A54F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 359E6ED92382E18E0002A54F /* ViewController.swift */; };
@@ -60,6 +62,8 @@
 		350671AC23839E0B000669EC /* PaymentSuccessViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentSuccessViewController.swift; sourceTree = "<group>"; };
 		350671AE23839F1A000669EC /* PaymentMethodTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentMethodTableViewCell.swift; sourceTree = "<group>"; };
 		350671B02383A94F000669EC /* ProfileActiveCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileActiveCollectionViewCell.swift; sourceTree = "<group>"; };
+		351140502384DDE300A61BB6 /* Responses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Responses.swift; sourceTree = "<group>"; };
+		3511405223851D3B00A61BB6 /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		359E6ED22382E18E0002A54F /* foodConsumerDummy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = foodConsumerDummy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		359E6ED52382E18E0002A54F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		359E6ED72382E18E0002A54F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -110,6 +114,8 @@
 		359E6ED42382E18E0002A54F /* foodConsumerDummy */ = {
 			isa = PBXGroup;
 			children = (
+				351140502384DDE300A61BB6 /* Responses.swift */,
+				3511405223851D3B00A61BB6 /* Requests.swift */,
 				359E6ED52382E18E0002A54F /* AppDelegate.swift */,
 				359E6ED72382E18E0002A54F /* SceneDelegate.swift */,
 				359E6ED92382E18E0002A54F /* ViewController.swift */,
@@ -230,6 +236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				351140512384DDE300A61BB6 /* Responses.swift in Sources */,
 				350671AB23839DF3000669EC /* PaymentMethodsViewController.swift in Sources */,
 				359E6F1B2382FBE60002A54F /* RestaurantTableViewCell.swift in Sources */,
 				359E6EDA2382E18E0002A54F /* ViewController.swift in Sources */,
@@ -241,6 +248,7 @@
 				359E6F192382F7E90002A54F /* PrevOrderedCollectionViewCell.swift in Sources */,
 				359E6F152382F7640002A54F /* CartViewController.swift in Sources */,
 				359E6ED62382E18E0002A54F /* AppDelegate.swift in Sources */,
+				3511405323851D3B00A61BB6 /* Requests.swift in Sources */,
 				359E6ED82382E18E0002A54F /* SceneDelegate.swift in Sources */,
 				350671B12383A94F000669EC /* ProfileActiveCollectionViewCell.swift in Sources */,
 				350671AF23839F1A000669EC /* PaymentMethodTableViewCell.swift in Sources */,

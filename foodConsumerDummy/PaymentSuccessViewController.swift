@@ -63,6 +63,7 @@ class PaymentSuccessViewController: UIViewController,UITableViewDelegate,UITable
         seperatorOne.backgroundColor = UIColor(named: "text light")
         seperatorTwo.backgroundColor = UIColor(named: "text light")
         seperatorThree.backgroundColor = UIColor(named: "text light")
+         navigationItem.hidesBackButton = true
         
         scrollView.layer.cornerRadius = 16
         scrollView.layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]

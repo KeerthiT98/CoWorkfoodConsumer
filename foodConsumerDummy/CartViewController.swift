@@ -63,9 +63,12 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
                     item_val += it.qty
                     price_val += (it.qty * Int(it.price.components(separatedBy: " ")[1])!)
                 }
-                var taxValue = Int(Double(price_val)*0.05)
-                payBtn.setTitle("Pay · " + String(price_val+taxValue), for: .normal)
+                var taxValue = Double(price_val)*0.05
+                payBtn.setTitle("Pay · Rs. " + String(Double(price_val) + taxValue), for: .normal)
                 cartItemsQty.text = String(items)+" Items Ordered"
+                billItemTotalValue.text = "Rs. " + String(price_val)
+                restaurantChargesValue.text = "Rs. " + String(taxValue)
+                amountTotalValue.text = "Rs. " + String(Double(price_val) + taxValue)
                 cartTableView.reloadData()
             }
             else{
@@ -86,21 +89,29 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         cartTableViewHeight.constant = cartTableView.contentSize.height
         tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(named: "oyo_red")], for: .selected)
         
+         navigationItem.hidesBackButton = true
+        
         emptyCartBtn.setTitleColor(UIColor(named: "oyo_red"), for: .normal)
         emptyCartBtn.setTitle("PLACE NEW ORDER", for: .normal)
         
         payBtn.backgroundColor = UIColor(named: "secondary")
         
-    
+        seperatorOne.backgroundColor = UIColor(named: "text light")
+        seperatorTwo.backgroundColor = UIColor(named: "text light")
+        seperatorThree.backgroundColor = UIColor(named: "text light")
        if  preferences.object(forKey: "selectedItems") != nil{
         selectedItems = NSKeyedUnarchiver.unarchiveObject(with: preferences.object(forKey: "selectedItems") as! Data) as! [ItemListingViewController.Item]
             for it in selectedItems{
                 price += (it.qty * Int(it.price.components(separatedBy: " ")[1])!)
                 items+=it.qty
             }
-        var taxValue = Int(Double(price)*0.05)
-        payBtn.setTitle("Pay · " + String(price+taxValue), for: .normal)
-        cartItemsQty.text = String(items)+" Items Ordered"
+        var taxValue = Double(price)*0.05
+        payBtn.setTitle("Pay · Rs.  " + String(Double(price)+taxValue), for: .normal)
+        cartItemsQty.text = String(items) + " Items Ordered"
+        restaurantChargesValue.text = "Rs. " + String(taxValue)
+        billItemTotalValue.text = "Rs. " + String(price)
+        amountTotalValue.text = "Rs. " + String(Double(price) + taxValue)
+        
         }
         
         if(items == 0){
@@ -112,7 +123,7 @@ class CartViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         else{
             scrollview.isHidden = false
             var taxValue = Int(Double(price)*0.05)
-            payBtn.setTitle("Pay · " + String(price+taxValue), for: .normal)
+            payBtn.setTitle("Pay · Rs. " + String(price+taxValue), for: .normal)
             emptyCartView.isHidden = true
         }
         

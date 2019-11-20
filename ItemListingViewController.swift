@@ -81,6 +81,7 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
         itemListingRestaurantName.text = restroName
         itemListingRestaurantTags.text = restaurantTags
@@ -93,6 +94,7 @@ class ItemListingViewController: UIViewController,UITableViewDataSource,UITableV
         cartView.layer.borderColor = UIColor(named: "secondary")?.cgColor
         cartView.layer.maskedCorners = [.layerMinXMaxYCorner,.layerMaxXMaxYCorner]
         cartView.isHidden = true
+        itemSearchBar.backgroundImage = UIImage()
         itemSearchBar.delegate = self
        
         if  preferences.object(forKey: "selectedItems") != nil{

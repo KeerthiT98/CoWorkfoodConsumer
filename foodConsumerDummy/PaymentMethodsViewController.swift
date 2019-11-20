@@ -15,6 +15,7 @@ class PaymentMethodsViewController: UIViewController,UITableViewDataSource,UITab
     
     override func viewDidLoad() {
         super.viewDidLoad()
+         navigationItem.hidesBackButton = true
 
         // Do any additional setup after loading the view.
     }

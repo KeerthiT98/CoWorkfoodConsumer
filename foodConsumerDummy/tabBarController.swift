@@ -16,6 +16,7 @@ class tabBarController: UITabBarController {
         let cartVC = CartViewController()
         let profileVC = ProfileViewController()
         
+         navigationItem.hidesBackButton = true
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [homeVC,cartVC,profileVC]
 

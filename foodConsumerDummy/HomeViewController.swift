@@ -25,12 +25,16 @@ class HomeViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.hidesBackButton = true
         setupRestaurantDetails()
         // Do any additional setup after loading the view.
         self.restaurantTableView.tableHeaderView = UIView(frame: CGRect(x: 0.0, y: 0.0, width: 0.0, height: 16))
         prevOrderedTxt.textColor = UIColor(named: "text light")
         restauarntsTxt.textColor = UIColor(named: "text light")
         tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(named: "oyo_red")], for: .selected)
+        
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

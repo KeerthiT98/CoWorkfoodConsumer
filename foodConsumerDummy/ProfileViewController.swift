@@ -38,6 +38,8 @@ class ProfileViewController: UIViewController,UICollectionViewDelegate,UICollect
         super.viewDidLoad()
         tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor(named: "oyo_red")], for: .selected)
     viewOlderOrdersBtn.setTitleColor(UIColor(named: "oyo_red"), for: .normal)
+        
+         navigationItem.hidesBackButton = true
            
         // Do any additional setup after loading the view.
     }
